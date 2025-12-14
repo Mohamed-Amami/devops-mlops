@@ -3,9 +3,7 @@ import mlflow.sklearn
 
 app = FastAPI()
 
-model = mlflow.sklearn.load_model(
-    "models:/Iris-Experiment/Production"
-)
+model = mlflow.sklearn.load_model("models:/IrisModel@production")
 
 @app.post("/predict")
 def predict(data: list):
