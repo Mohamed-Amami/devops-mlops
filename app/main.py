@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 import mlflow.sklearn
 
 app = FastAPI()
@@ -6,6 +6,6 @@ app = FastAPI()
 model = mlflow.sklearn.load_model("models:/IrisModel@production")
 
 @app.post("/predict")
-def predict(data: list):
+def predict(data: list = Body(...)):
     prediction = model.predict([data])
     return {"prediction": int(prediction[0])}
