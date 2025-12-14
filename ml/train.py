@@ -16,9 +16,7 @@ with mlflow.start_run():
 
     mlflow.log_metric("accuracy", acc)
 
-    # 🔴 THIS LINE IS THE KEY
     mlflow.sklearn.log_model(
         model,
         artifact_path="model",
-        registered_model_name="IrisModel"
-    )
+        registered_model_name="IrisModel")
