@@ -15,4 +15,8 @@ with mlflow.start_run():
     acc = model.score(X_test, y_test)
 
     mlflow.log_metric("accuracy", acc)
-    mlflow.sklearn.log_model(model, "model")
+    mlflow.sklearn.log_model(
+        model,
+        artifact_path="model",
+        registered_model_name="IrisModel"
+    )
